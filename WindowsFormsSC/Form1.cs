@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
+using System.Security;
 
 namespace WindowsFormsSC
 {
@@ -61,6 +63,32 @@ namespace WindowsFormsSC
             //MessageBox.Show(thisFormat.ToString());
             pictureBox1.Image = Image.FromFile(tv.SelectedNode.Text);
       
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var filePath = openFileDialog1.FileName;
+                    using (FileStream fs = File.Open(filePath, FileMode.Open))
+                    {
+                        Process.Start("notepad.exe", filePath);
+                    }
+                }
+                catch (SecurityException ex)
+                {
+                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
+                    $"Details:\n\n{ex.StackTrace}");
+                }
+            }
         }
     }
 }
