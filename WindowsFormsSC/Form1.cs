@@ -47,7 +47,20 @@ namespace WindowsFormsSC
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            
+            TreeView tv = (TreeView)sender;
+            Image imgInput;
+            //MessageBox.Show(tv.SelectedNode.Text);
+            try
+            {
+                imgInput = Image.FromFile(tv.SelectedNode.Text);
+            }
+            catch  { return; }
+
+            Graphics gInput = Graphics.FromImage(imgInput);
+            System.Drawing.Imaging.ImageFormat thisFormat = imgInput.RawFormat;
+            //MessageBox.Show(thisFormat.ToString());
+            pictureBox1.Image = Image.FromFile(tv.SelectedNode.Text);
+      
         }
     }
 }
