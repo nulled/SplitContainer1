@@ -72,7 +72,6 @@ namespace WindowsFormsSC
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -89,6 +88,50 @@ namespace WindowsFormsSC
                     $"Details:\n\n{ex.StackTrace}");
                 }
             }
+        }
+
+        private void ColorPickerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(colorDialog1.Color.ToString());
+            }
+        }
+
+        private void FontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(fontDialog1.Font.ToString());
+            }
+        }
+
+        private void PageSetupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pageSetupDialog1.PageSettings = new System.Drawing.Printing.PageSettings();
+
+            // Initialize dialog's PrinterSettings property to hold user
+            // set printer settings.
+            pageSetupDialog1.PrinterSettings = new System.Drawing.Printing.PrinterSettings();
+
+            if (pageSetupDialog1.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Page Setup Done");
+            }
+        }
+
+        private void PrintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Print Done");
+            }
+        }
+
+        private void AboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
         }
     }
 }
