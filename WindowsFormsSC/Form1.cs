@@ -94,7 +94,7 @@ namespace WindowsFormsSC
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(colorDialog1.Color.ToString());
+                panel1.BackColor = colorDialog1.Color;
             }
         }
 
@@ -132,6 +132,12 @@ namespace WindowsFormsSC
         {
             Form2 form2 = new Form2();
             form2.Show();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
         }
     }
 }

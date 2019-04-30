@@ -58,8 +58,9 @@
             this.ClientSize = new System.Drawing.Size(143, 79);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "About";
             this.ResumeLayout(false);
             this.PerformLayout();
 
