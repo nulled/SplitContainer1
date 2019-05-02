@@ -39,9 +39,9 @@ namespace WindowsFormsSC
                     imageList1.Images.Add(Image.FromFile(path));
                 }
             }
-            catch (Exception ee)
+            catch (Exception ex)
             {
-                MessageBox.Show(ee.Message);
+                MessageBox.Show(ex.Message);
             }
             listView1.LargeImageList = imageList1;
             listView1.Items.Add("Image 1", 0);
@@ -83,6 +83,12 @@ namespace WindowsFormsSC
             {
                 panel1.BackColor = colorDialog1.Color;
             }
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Form form4 = new Form4();
+            form4.Show();
         }
     }
 }
